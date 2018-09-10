@@ -1,0 +1,36 @@
+
+[
+  {
+    "product_id": "100",
+    "variant_id": null,
+    "name": "Nyanya",
+    "description": "Nyanya zilizo toka kvunwa mwezi huu, zenye ubora wa hali ya juu",
+    "image_url" : "http://www.mwananchi.co.tz/image/view/-/4639442/highRes/2027857/-/lfytvj/-/nyanya+pic.jpg",
+    "price": "Tshs500 kwa tenga",
+    "location": "Tanzania",
+    "vendor": "Hussein Agro business",
+    "contact": [
+      "Hussein",
+      "0754627192",
+      "management@husseinagrobizz.co.tz"
+    ],
+    "is_available": 1
+  },
+  {
+    "product_id": "101",
+    "variant_id": null,
+    "name": "Mbuzi wa maziwa",
+    "description": "Pata mbuzi wa kisasa wa maziwa kutoka denmark",
+    "image_url": "https://4.imimg.com/data4/JX/NA/ANDROID-9488064/product-500x500.jpeg",
+    "price": "Tshs450,000",
+    "location": "Iriga",
+    "vendor": "Shiga Enterprise",
+    "contact": [
+      "Shiga",
+      "0658726842",
+      "sales@shiga.co.tz"
+    ],
+    "is_available": 1
+  }
+
+]

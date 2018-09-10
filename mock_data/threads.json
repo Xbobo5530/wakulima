@@ -1,0 +1,24 @@
+[
+  {
+    "thread_id": "100",
+    "title": "Sungura wantakiwa kula nini?",
+    "description": "Jamani naomba kuuliza, sungura wanatakiwa kula chakula cha aina hani jamani, naomba maelezo",
+    "author_id": "XYZ",
+    "tags": [
+      "ufugaji",
+      "sungura",
+      "malisho"
+    ]
+  },
+  {
+    "thread_id": "101",
+    "title": "ita nigharimu sh ngapi kuanza greenhouse",
+    "description": "namba taarifa za namna ya kuanza kilimo cha greenhouse",
+    "author_id": "MMX",
+    "tags": [
+      "greenhouse",
+      "kilimo"
+    ]
+  }
+
+]
