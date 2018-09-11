@@ -52,37 +52,32 @@ class ArticlesContentState extends State<ArticlesContentView> {
     if (imageUrl != null && imageUrl.isNotEmpty) {
       //show left section with image
       articleView = new ListTile(
-        leading: new Image.network(imageUrl, width: 100.0,),
-        title: new Text(article.title),
-        subtitle: new Text(article.description),
+        trailing: new Image.network(
+          imageUrl,
+          fit: BoxFit.cover,
+          width: 100.0,
+          height: 70.0,
+        ),
+        title: new Text(article.title, maxLines: 2,),
+        subtitle: new Text(article.description, maxLines: 3,),
       );
     } else {
       articleView = new ListTile(
-        title: new Text(article.title),
-        subtitle: new Text(article.description),
+        title: new Text(article.title, maxLines: 2,),
+        subtitle: new Text(article.description, maxLines: 3,),
       );
     }
-
-//    return Center(
-//      child: FlatButton(
-//        child: Card(
-//          child: new Container(
-//            constraints: BoxConstraints(maxHeight: 150.0),
-//            child: articleView,
-//          ),
-//        ), onPressed: () {_openArticle(article);},
-//      ),
-//    );
-
 
     return Center(
       child: Card(
         child: FlatButton(
+          padding: EdgeInsets.all(0.0),
           child: Wrap(
-            children: <Widget>[
-              articleView
-            ],
-          ), onPressed: () {_openArticle(article);},
+            children: <Widget>[articleView],
+          ),
+          onPressed: () {
+            _openArticle(article);
+          },
         ),
       ),
     );
