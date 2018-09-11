@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:wakulima/models/article.dart';
+import 'package:wakulima/pages/view_article.dart';
 
 class ArticlesContentView extends StatefulWidget {
   @override
@@ -33,9 +34,8 @@ class ArticlesContentState extends State<ArticlesContentView> {
                   itemCount: articlesList.length,
                   itemBuilder: (BuildContext context, int index) {
                     var article = articlesList[index];
-                    return _buildForumItemView(article);
+                    return _buildArticleItemView(article);
                   },
-
                 );
               } else {
                 print('articles data: $articlesData');
@@ -46,34 +46,52 @@ class ArticlesContentState extends State<ArticlesContentView> {
     );
   }
 
-  Center _buildForumItemView(Article article) {
-
-    var leftSection; //show the image
+  Center _buildArticleItemView(Article article) {
+    var articleView; //show the image
     var imageUrl = article.imageUrl;
-    if (imageUrl != null){
+    if (imageUrl != null && imageUrl.isNotEmpty) {
       //show left section with image
-      leftSection = new Container(
-        child: Image.network(imageUrl),
+      articleView = new ListTile(
+        leading: new Image.network(imageUrl, width: 100.0,),
+        title: new Text(article.title),
+        subtitle: new Text(article.description),
       );
-    }else{
-      leftSection = new Container();
+    } else {
+      articleView = new ListTile(
+        title: new Text(article.title),
+        subtitle: new Text(article.description),
+      );
     }
 
-    var rightSection = new ListTile(
-      title: new Text(article.title),
-      subtitle: new Text(article.description),
-    );
+//    return Center(
+//      child: FlatButton(
+//        child: Card(
+//          child: new Container(
+//            constraints: BoxConstraints(maxHeight: 150.0),
+//            child: articleView,
+//          ),
+//        ), onPressed: () {_openArticle(article);},
+//      ),
+//    );
 
 
     return Center(
-        child: Card(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
+      child: Card(
+        child: FlatButton(
+          child: Wrap(
             children: <Widget>[
-              leftSection,
-              rightSection,
+              articleView
             ],
-          ),
-        ));
+          ), onPressed: () {_openArticle(article);},
+        ),
+      ),
+    );
+  }
+
+  void _openArticle(Article article) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => ViewArticlePage(article)),
+    );
   }
 }

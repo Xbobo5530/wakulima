@@ -7,6 +7,7 @@ class ArticlesTab extends StatelessWidget {
     return Scaffold(
       floatingActionButton: new FloatingActionButton(
           tooltip: 'create a new article',
+          heroTag: 'create new article',
           child: new Icon(Icons.add),
           onPressed: () {
             _createNewArticle();

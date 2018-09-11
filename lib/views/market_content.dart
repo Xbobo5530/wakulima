@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:wakulima/models/product.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:wakulima/pages/view_product.dart';
 
 class MarketContentView extends StatefulWidget {
   @override
@@ -31,38 +32,14 @@ class MarketContentState extends State<MarketContentView> {
                 }
 
                 return new StaggeredGridView.countBuilder(
-                  crossAxisCount: 4,
-                  itemCount: productsList.length,
-                  itemBuilder: (BuildContext context, int index) {
-                    var product = productsList[index];
-                    return _buildProductItemView(product);
-                  },
-//                  new Container(
-//                      color: Colors.green,
-//                      child: new Center(
-//                        child: new CircleAvatar(
-//                          backgroundColor: Colors.white,
-//                          child: new Text('$index'),
-//                        ),
-//                      )),
-                  staggeredTileBuilder: (int index) =>
-                  new StaggeredTile.fit(productsList.length)
-                );
-
-//                  new StaggeredTile.count(2, index.isEven ? 2 : 1),
-//                  mainAxisSpacing: 4.0,
-//                  crossAxisSpacing: 4.0,
-//                );
-
-//                return GridView.builder(
-//                  gridDelegate: new SliverGridDelegateWithFixedCrossAxisCount(
-//                      crossAxisCount: 2),
-//                  itemCount: productsList.length,
-//                  itemBuilder: (BuildContext context, int index) {
-//                    var product = productsList[index];
-//                    return _buildProductItemView(product);
-//                  },
-//                );
+                    crossAxisCount: 4,
+                    itemCount: productsList.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      var product = productsList[index];
+                      return _buildProductItemView(product);
+                    },
+                    staggeredTileBuilder: (int index) =>
+                        new StaggeredTile.fit(productsList.length));
               } else {
                 print('products data: $productsData');
                 return new Text('Error the products data is null');
@@ -78,19 +55,19 @@ class MarketContentState extends State<MarketContentView> {
     if (imageUrl != null) {
       //show top section with image
       topSection = new Container(
-          child: Image.network(imageUrl),
+        child: Image.network(imageUrl),
       );
     } else {
       topSection = new Container();
     }
 
     var middleSection = new ListTile(
-        title: new Text(product.name),
-        subtitle: new Text(product.description),
+      title: new Text(product.name),
+      subtitle: new Text(product.description),
     );
     var price = product.price;
     var bottomSection = Padding(
-      padding: const EdgeInsets.only(left: 8.0),
+      padding: const EdgeInsets.only(left: 16.0, bottom: 8.0),
       child: new Text(
         '$price',
         style: new TextStyle(
@@ -104,14 +81,24 @@ class MarketContentState extends State<MarketContentView> {
 
     return Center(
         child: Card(
-      child: Wrap(
+      child: FlatButton(
+        padding: EdgeInsets.all(0.0),
+        child: Wrap(
 //        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: <Widget>[
-          topSection,
-          middleSection,
-          bottomSection,
-        ],
+          children: <Widget>[
+            topSection,
+            middleSection,
+            bottomSection,
+          ],
+        ), onPressed: () {_openProductPage(product);},
       ),
     ));
+  }
+
+  void _openProductPage(Product product) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => ViewProductPage(product)),
+    );
   }
 }

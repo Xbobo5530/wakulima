@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:wakulima/models/thread.dart';
+import 'package:wakulima/pages/view_thread.dart';
 
 class ForumContentView extends StatefulWidget {
   @override
@@ -49,15 +50,25 @@ class ForumContentState extends State<ForumContentView> {
   Center _buildForumItemView(Thread thread) {
     return Center(
         child: Card(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: <Widget>[
-              ListTile(
-                title: new Text(thread.title),
-                subtitle: new Text(thread.description),
-              )
-            ],
+          child: FlatButton(
+            padding: EdgeInsets.all(0.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: <Widget>[
+                ListTile(
+                  title: new Text(thread.title),
+                  subtitle: new Text(thread.description),
+                )
+              ],
+            ), onPressed: () {_openThread(thread);},
           ),
         ));
+  }
+
+  void _openThread(Thread thread) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => ViewThreadPage(thread)),
+    );
   }
 }

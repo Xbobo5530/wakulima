@@ -6,7 +6,8 @@ class ForumTab extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: new FloatingActionButton(
-          tooltip: 'create a new article',
+          tooltip: 'create a new thread',
+          heroTag: 'create new thread',
           child: new Icon(Icons.add),
           onPressed: () {
             _createNewThread();

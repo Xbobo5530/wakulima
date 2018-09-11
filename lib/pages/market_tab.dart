@@ -9,7 +9,8 @@ class MarketTab extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         floatingActionButton: new FloatingActionButton(
-            tooltip: 'create a new article',
+            tooltip: 'add new product',
+            heroTag: 'add new product',
             child: new Icon(Icons.add),
             onPressed: () {
               _addNewProduct();
