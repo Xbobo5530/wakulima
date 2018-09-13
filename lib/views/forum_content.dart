@@ -36,7 +36,6 @@ class ForumContentState extends State<ForumContentView> {
                     var thread = threadsList[index];
                     return _buildForumItemView(thread);
                   },
-
                 );
               } else {
                 print('forum data: $forumData');
@@ -48,21 +47,44 @@ class ForumContentState extends State<ForumContentView> {
   }
 
   Center _buildForumItemView(Thread thread) {
+    var title = thread.title;
+    var description = thread.description;
+    var userImageUrl = thread.userImageUrl;
+    var leftSection;
+    if (userImageUrl != null) {
+      leftSection = Padding(
+        padding: const EdgeInsets.only(left: 8.0, top: 8.0, bottom: 8.0),
+        child: new CircleAvatar(
+          radius: 30.0,
+          backgroundColor: Colors.green,
+          backgroundImage: new NetworkImage(userImageUrl)
+        ),
+      );
+    } else {
+      leftSection = new Container();
+    }
+
+    var rightSection = Expanded(
+      child: new ListTile(
+        title: new Text(title),
+        subtitle: new Text(description),
+      ),
+    );
+
     return Center(
         child: Card(
-          child: FlatButton(
-            padding: EdgeInsets.all(0.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: <Widget>[
-                ListTile(
-                  title: new Text(thread.title),
-                  subtitle: new Text(thread.description),
-                )
-              ],
-            ), onPressed: () {_openThread(thread);},
-          ),
-        ));
+      child: GestureDetector(
+        child: Row(
+          children: <Widget>[
+            leftSection,
+            rightSection,
+          ],
+        ),
+        onTap: () {
+          _openThread(thread);
+        },
+      ),
+    ));
   }
 
   void _openThread(Thread thread) {

@@ -4,10 +4,26 @@
     "title": "Sungura wantakiwa kula nini?",
     "description": "Jamani naomba kuuliza, sungura wanatakiwa kula chakula cha aina hani jamani, naomba maelezo",
     "author_id": "XYZ",
+    "username": "Ufugaji Tanzania",
+    "user_image_url": "http://www.channelten.co.tz/wp-content/uploads/2017/07/kienyeji.jpg",
     "tags": [
       "ufugaji",
       "sungura",
       "malisho"
+    ],
+    "comments": [
+      {"comment_id": "aaf", "user_id": "uu4", "username": "Basheli",
+        "comment": "Sungura wanakula majani zaidi"},
+      {"comment_id": "aag", "user_id": "ppp", "username": "Ufugaji Tanzania",
+        "comment": "nimajani ya aina gani, majani tu yoyote??"},
+      {"comment_id": "aah", "user_id": "pp3", "username": "wajasiliamali bongo",
+        "comment": "check hii hapa link wanwaelezea vizuri\nhttp://myhouserabbit.com/rabbit-care/what-to-feed-your-pet-rabbit/"},
+      {"comment_id": "aak", "user_id": "pp4", "username": "Eva",
+        "comment": "kuna za kiswahili??? wengine lugha changamoto.."},
+      {"comment_id": "aar", "user_id": "pp1", "username": "Scolastica",
+        "comment": "checki hii hapa ya kiswahili \nhttp://mitiki.blogspot.com/2010/06/ufugaji-bora-wa-sungura.html"},
+      {"comment_id": "aaa", "user_id": "uu4", "username": "Basheli",
+        "comment": "check hizo link uone"}
     ]
   },
   {
@@ -15,9 +31,27 @@
     "title": "ita nigharimu sh ngapi kuanza greenhouse",
     "description": "namba taarifa za namna ya kuanza kilimo cha greenhouse",
     "author_id": "MMX",
+    "username": "Mbole J Peter",
+    "user_image_url": "https://www.icsa.org.uk/assets/images/branches/tanzania-1495-555.jpg",
     "tags": [
       "greenhouse",
       "kilimo"
+    ],
+    "comments": [
+      {"comment_id": "aab", "user_id": "uu1", "username": "Authman Abd",
+        "comment": "sana, hapo ni ngumu kusema itakua sh ngapi bila kujua uantaka kulima nini, kwani unataka kulima nnini??"},
+      {"comment_id": "aaa", "user_id": "uuu", "username": "Michael B.",
+        "comment": "aisee, hio itategemea na namna ya kilimo unacho taka kufanya"},
+      {"comment_id": "aac", "user_id": "uu3", "username": "Mbole J Peter",
+        "comment": "Mimi nataka kulima apple"},
+      {"comment_id": "aad", "user_id": "uu4", "username": "John Ngosha",
+        "comment": "apple tanzania?? \nusijui kama inawezekana"},
+      {"comment_id": "aae", "user_id": "uu1", "username": "Authman Abd",
+        "comment": "ma apple ni changamoto sana tanzania"},
+      {"comment_id": "aac", "user_id": "uu3", "username": "Mbole J Peter",
+        "comment": "nilisikia kwamnba inawezekana kama ukitumia greenhouse"},
+      {"comment_id": "aaa", "user_id": "uu4", "username": "John Ngosha",
+        "comment": "sidhani sana, maana najua apple zinahitaji baridi kukua vizuri...ndomaana ma apple ya tanzania mranyingi tunaleta kutoka SOuth afrika"}
     ]
   }
 

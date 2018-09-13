@@ -13,14 +13,25 @@ class ViewThreadPage extends StatelessWidget {
       appBar: AppBar(
         title: Text(thread.title),
       ),
-      body: Center(
-        child: RaisedButton(
-          onPressed: () {
-            // Navigate back to first screen when tapped!
-          },
-          child: Text('Go back!'),
+      body: _buildForumContent(thread),
+    );
+  }
+
+  Column _buildForumContent(Thread thread) {
+    return Column(
+      children: <Widget>[
+        Card(
+          child: Wrap(
+            children: <Widget>[
+              new ListTile(
+                title: new Text(thread.title),
+                subtitle: new Text(thread.description),
+              ),
+
+            ],
+          ),
         ),
-      ),
+      ],
     );
   }
 }

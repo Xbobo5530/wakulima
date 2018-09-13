@@ -70,12 +70,11 @@ class ArticlesContentState extends State<ArticlesContentView> {
 
     return Center(
       child: Card(
-        child: FlatButton(
-          padding: EdgeInsets.all(0.0),
+        child: GestureDetector(
           child: Wrap(
             children: <Widget>[articleView],
           ),
-          onPressed: () {
+          onTap: () {
             _openArticle(article);
           },
         ),
