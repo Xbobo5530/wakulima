@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 
-class FilterPage extends StatelessWidget {
+const PAGE_TITLE = 'Chuja';
 
+class FilterPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Filter'),
+        title: Text(PAGE_TITLE),
       ),
       body: Center(
         child: RaisedButton(

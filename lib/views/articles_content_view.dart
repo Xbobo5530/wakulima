@@ -1,7 +1,10 @@
 import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:wakulima/models/article.dart';
 import 'package:wakulima/pages/view_article.dart';
+
+const ARTICLES = 'mock_data/articles.json';
 
 class ArticlesContentView extends StatefulWidget {
   @override
@@ -14,8 +17,7 @@ class ArticlesContentState extends State<ArticlesContentView> {
     return new Container(
       child: new Center(
         child: new FutureBuilder(
-            future: DefaultAssetBundle.of(context)
-                .loadString('mock_data/articles.json'),
+            future: DefaultAssetBundle.of(context).loadString(ARTICLES),
             builder: (context, snapshot) {
               //decode json
               var articlesData = json.decode(snapshot.data.toString());
@@ -58,13 +60,25 @@ class ArticlesContentState extends State<ArticlesContentView> {
           width: 100.0,
           height: 70.0,
         ),
-        title: new Text(article.title, maxLines: 2,),
-        subtitle: new Text(article.description, maxLines: 3,),
+        title: new Text(
+          article.title,
+          maxLines: 2,
+        ),
+        subtitle: new Text(
+          article.description,
+          maxLines: 3,
+        ),
       );
     } else {
       articleView = new ListTile(
-        title: new Text(article.title, maxLines: 2,),
-        subtitle: new Text(article.description, maxLines: 3,),
+        title: new Text(
+          article.title,
+          maxLines: 2,
+        ),
+        subtitle: new Text(
+          article.description,
+          maxLines: 3,
+        ),
       );
     }
 

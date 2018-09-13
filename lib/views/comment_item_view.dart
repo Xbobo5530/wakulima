@@ -8,9 +8,6 @@ class CommentItemView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var leftSection;
-    var rightSection;
-
     var username = comment.username;
     var message = comment.comment;
 
@@ -39,6 +36,4 @@ class CommentItemView extends StatelessWidget {
           ]),
     );
   }
-
-  void _replyComment() {}
 }

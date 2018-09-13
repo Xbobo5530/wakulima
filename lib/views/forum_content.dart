@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:wakulima/models/thread.dart';
 import 'package:wakulima/views/forum_item_view.dart';
 
+const THREADS = 'mock_data/threads.json';
+
 class ForumContentView extends StatefulWidget {
   @override
   ForumContentState createState() => new ForumContentState();
@@ -15,8 +17,7 @@ class ForumContentState extends State<ForumContentView> {
     return new Container(
       child: new Center(
         child: new FutureBuilder(
-            future: DefaultAssetBundle.of(context)
-                .loadString('mock_data/threads.json'),
+            future: DefaultAssetBundle.of(context).loadString(THREADS),
             builder: (context, snapshot) {
               //decode json
               var forumData = json.decode(snapshot.data.toString());

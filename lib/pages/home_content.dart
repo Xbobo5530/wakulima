@@ -5,6 +5,11 @@ import 'package:wakulima/pages/filter_content.dart';
 import 'package:wakulima/pages/forum_tab.dart';
 import 'package:wakulima/pages/market_tab.dart';
 
+const APP_NAME = 'Wakulima';
+const ARTICLES_TAB_TITLE = 'Makala';
+const FORUM_TAB_TITLE = 'Mijadala';
+const MARKET_TAB_TITLE = 'Soko';
+
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -56,11 +61,11 @@ class HomePage extends StatelessWidget {
                         })
                   ],
                   bottom: TabBar(tabs: [
-                    buildTab(Icons.library_books, 'Makala'),
-                    buildTab(Icons.forum, 'Mijadala'),
-                    buildTab(Icons.store_mall_directory, 'Soko'),
+                    buildTab(Icons.library_books, ARTICLES_TAB_TITLE),
+                    buildTab(Icons.forum, FORUM_TAB_TITLE),
+                    buildTab(Icons.store_mall_directory, MARKET_TAB_TITLE),
                   ]),
-                  title: const Text('Wakulima'),
+                  title: const Text(APP_NAME),
                 ),
                 body: TabBarView(children: [
                   new ArticlesTab(),

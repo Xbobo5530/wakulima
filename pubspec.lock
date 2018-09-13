@@ -83,6 +83,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.0.5"
+  flutter_launch:
+    dependency: "direct main"
+    description:
+      name: flutter_launch
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.1.2"
   flutter_slidable:
     dependency: "direct main"
     description:

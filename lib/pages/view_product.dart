@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_fab_dialer/flutter_fab_dialer.dart';
+import 'package:flutter_launch/flutter_launch.dart';
 import 'package:map_view/map_view.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'package:wakulima/models/contact.dart';
 import 'package:wakulima/models/product.dart';
 
 const API_KEY = "AIzaSyDXiB_QFAVQAssZqat4ApMeP9I96HWViCI";
@@ -15,43 +18,52 @@ class ViewProductPage extends StatelessWidget {
   Widget build(BuildContext context) {
     MapView.setApiKey(API_KEY);
 
+    Contact contact = _getContact();
+    var phoneNumber = contact.phone;
+    var phoneUrl = 'tel:$phoneNumber';
+    var smsUrl = 'sms:$phoneNumber';
+    var email = contact.email;
+    var emailUrl = 'mailto:$email';
+    var whatsapp = contact.whatsapp;
+    var whatsappUrl = 'whatsapp:$whatsapp';
+
     var _fabMiniMenuItemList = [
       new FabMiniMenuItem.withText(
-        new Icon(Icons.live_help),
+        new Icon(Icons.contact_phone),
         Colors.green,
         4.0,
         "Button menu",
-        _call,
+        () => _action(phoneUrl),
         "Piga simu",
         Colors.green,
         Colors.white,
       ),
       new FabMiniMenuItem.withText(
-        new Icon(Icons.library_add),
+        new Icon(Icons.chat_bubble_outline),
         Colors.green,
         4.0,
         "Button menu",
-        _whatsapp,
+        () => _action(whatsappUrl),
         "WhatsApp",
         Colors.green,
         Colors.white,
       ),
       new FabMiniMenuItem.withText(
-        new Icon(Icons.add_shopping_cart),
+        new Icon(Icons.email),
         Colors.green,
         4.0,
         "Button menu",
-        _email,
+        () => _action(emailUrl),
         "Barua pepe",
         Colors.green,
         Colors.white,
       ),
       new FabMiniMenuItem.withText(
-        new Icon(Icons.add_shopping_cart),
+        new Icon(Icons.message),
         Colors.green,
         4.0,
         "Button menu",
-        _sms,
+        () => _action(smsUrl),
         "Tuma ujumbe",
         Colors.green,
         Colors.white,
@@ -68,7 +80,7 @@ class ViewProductPage extends StatelessWidget {
             child: _buildProductContent(product),
           ),
           new FabDialer(
-              _fabMiniMenuItemList, Colors.green, new Icon(Icons.add)),
+              _fabMiniMenuItemList, Colors.green, new Icon(Icons.call)),
         ],
       ),
     );
@@ -149,15 +161,9 @@ class ViewProductPage extends StatelessWidget {
     );
 
     var staticMapProvider = new StaticMapProvider(API_KEY);
-    var staticMapUri;
-    var mapSection;
+    var staticMapUri = new Uri();
+    var mapSection = new Container();
 
-    staticMapUri = staticMapProvider.getStaticUri(Locations.iringa, 12,
-        width: 900, height: 400, mapType: StaticMapViewType.roadmap);
-    mapSection = new Container(
-      child: new Image.network(staticMapUri.toString()),
-    );
-    //todo fix magic code
     switch (location) {
       case 'Iringa':
         staticMapUri = staticMapProvider.getStaticUri(Locations.iringa, 12,
@@ -193,11 +199,34 @@ class ViewProductPage extends StatelessWidget {
     );
   }
 
-  void _sms() {}
+  _action(String url) async {
+    if (!url.contains('whatsapp')) {
+      if (await canLaunch(url)) {
+        await launch(url);
+      } else {
+        throw 'Could not launch $url';
+      }
+    } else {
+      bool hasWhatsapp = await FlutterLaunch.hasApp(name: 'whatsapp');
+      if (hasWhatsapp) {
+        var whatsappNumber = url.substring(url.indexOf(':'));
+        print('$tag whatsapp url is $whatsappNumber');
+        await FlutterLaunch.launchWathsApp(
+            phone: '$whatsappNumber', message: '');
+      } else {
+        print("$tag Whatsapp is not installed");
+      }
+    }
+  }
 
-  void _email() {}
-
-  void _whatsapp() {}
-
-  void _call() {}
+  Contact _getContact() {
+    assert(product.contact != null);
+    var contactData = product.contact;
+    List<Contact> contactList = new List();
+    for (var i = 0; i < contactData.length; i++) {
+      Contact contact = Contact.fromJson(contactData[i]);
+      contactList.add(contact);
+    }
+    return contactList[0];
+  }
 }
