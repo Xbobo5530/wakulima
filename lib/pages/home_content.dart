@@ -34,7 +34,7 @@ class HomePage extends StatelessWidget {
         Colors.green,
         4.0,
         "Button menu",
-        _addProduct,
+        _addArticle,
         "Tangaza bidhaa",
         Colors.green,
         Colors.white,
@@ -56,18 +56,9 @@ class HomePage extends StatelessWidget {
                         })
                   ],
                   bottom: TabBar(tabs: [
-                    Tab(
-                      icon: Icon(Icons.library_books),
-                      text: 'Makala',
-                    ),
-                    Tab(
-                      icon: Icon(Icons.forum),
-                      text: 'Mijadala',
-                    ),
-                    Tab(
-                      icon: Icon(Icons.store_mall_directory),
-                      text: 'Soko',
-                    ),
+                    buildTab(Icons.library_books, 'Makala'),
+                    buildTab(Icons.forum, 'Mijadala'),
+                    buildTab(Icons.store_mall_directory, 'Soko'),
                   ]),
                   title: const Text('Wakulima'),
                 ),
@@ -81,6 +72,13 @@ class HomePage extends StatelessWidget {
               _fabMiniMenuItemList, Colors.green, new Icon(Icons.add)),
         ],
       ),
+    );
+  }
+
+  Tab buildTab(IconData icon, String title) {
+    return Tab(
+      icon: Icon(icon),
+      text: title,
     );
   }
 

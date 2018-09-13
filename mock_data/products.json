@@ -7,12 +7,15 @@
     "description": "Nyanya zilizo toka kvunwa mwezi huu, zenye ubora wa hali ya juu",
     "image_url" : "http://www.mwananchi.co.tz/image/view/-/4639442/highRes/2027857/-/lfytvj/-/nyanya+pic.jpg",
     "price": "Tshs500 kwa tenga",
-    "location": "Tanzania",
+    "location": "Dodoma",
     "vendor": "Hussein Agro business",
     "contact": [
-      "Hussein",
-      "0754627192",
-      "management@husseinagrobizz.co.tz"
+      {
+        "name": "Hussein",
+        "phone": "0754627192",
+        "whatsapp": "+255754627192",
+        "email":"management@husseinagrobizz.co.tz"
+      }
     ],
     "tags": [
       "mboga",
@@ -26,15 +29,18 @@
     "product_id": "101",
     "variant_id": null,
     "name": "Mbuzi wa maziwa",
-    "description": "Pata mbuzi wa kisasa wa maziwa kutoka denmark",
+    "description": "Pata mbuzi wa kisasa wa maziwa kutoka denmark\nTunauza maziwa ya mbuzi kwa bei poa kabisa na pia kwa sasa tunakaribisha oda za kuku(vifaranga) vya kuku wa kienyeji,broiler na kwa baade tutakuwa na zaid ya hawa..karibuni na utakaponunua tunakupatia na elimu juu ya kuwatunza ili waweze kukuwa wote na uweze kufikia malengo yako pia ya ufugaj...karibuni sana kwa waliopo zanzibar unguja tunapatikana Bungi unguja kusini na pia kwa mjini tunapatikana Mwanakwerekwe melinne..kwa Bi rihi...karibuni sana",
     "image_url": "https://4.imimg.com/data4/JX/NA/ANDROID-9488064/product-500x500.jpeg",
     "price": "Tshs450,000",
     "location": "Iriga",
     "vendor": "Shiga Enterprise",
     "contact": [
-      "Shiga",
-      "0658726842",
-      "sales@shiga.co.tz"
+      {
+        "name": "Shiga",
+        "phone": "0658726842",
+        "whatsapp": "+255713819446",
+        "email":"sales@shiga.co.tz"
+      }
     ],
     "is_available": 1
   }

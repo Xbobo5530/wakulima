@@ -20,7 +20,7 @@ class ViewThreadPage extends StatelessWidget {
       floatingActionButton: new FloatingActionButton(
           child: Icon(Icons.reply),
           onPressed: () {
-            _replyThread();
+            _replyThread(context);
           }),
     );
   }
@@ -70,7 +70,51 @@ class ViewThreadPage extends StatelessWidget {
     }
   }
 
-  void _replyThread() {
+  void _replyThread(BuildContext context) async {
     //todo open reply dialog
+    var _replyController = new TextEditingController();
+    await showDialog(
+        context: context,
+        child: new AlertDialog(
+          contentPadding: const EdgeInsets.all(16.0),
+          content: new Row(
+            children: <Widget>[
+              new Expanded(
+                  child: new TextField(
+                maxLines: 3,
+                autofocus: false,
+                decoration: new InputDecoration(
+                    labelText: 'Toa maoni',
+                    hintText: 'Toa maoni yako juu maada hii'),
+                controller: _replyController,
+              ))
+            ],
+          ),
+          actions: <Widget>[
+            ButtonBar(
+              children: <Widget>[
+                FlatButton(
+                    onPressed: () => Navigator.pop(context),
+                    child: new Text('Futa')),
+                MaterialButton(
+                  child: new Text('Rejesha'),
+                  onPressed: () {
+                    _submitComment(context, _replyController);
+                  },
+                  color: Colors.green,
+                  textColor: Colors.white,
+                ),
+              ],
+            )
+          ],
+        ));
+  }
+
+  void _submitComment(BuildContext context, TextEditingController controller) {
+    var message = controller.text;
+    controller.clear();
+    Navigator.pop(context);
+
+    controller.dispose();
   }
 }

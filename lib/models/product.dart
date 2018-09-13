@@ -1,5 +1,13 @@
 class Product {
-  String productId, variantId, name, description, imageUrl, price, location, vendorId;
+  String productId,
+      variantId,
+      name,
+      description,
+      imageUrl,
+      price,
+      location,
+      vendorId,
+      vendor;
   List<dynamic> variants, contact;
   int isAvailable, isVariant;
 
@@ -12,6 +20,7 @@ class Product {
       this.price,
       this.location,
       this.vendorId,
+      this.vendor,
       this.variants,
       this.contact,
       this.isAvailable,
@@ -27,6 +36,7 @@ class Product {
     this.price = value['price'];
     this.location = value['location'];
     this.vendorId = value['vendor_id'];
+    this.vendor = value['vendor'];
     this.variants = value[variants];
     this.isAvailable = value['is_available'];
     this.contact = value['contact'];
