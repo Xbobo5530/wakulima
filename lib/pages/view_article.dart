@@ -11,7 +11,6 @@ class ViewArticlePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var sourceUrl = article.sourceUrl;
-
     var basicInfo = new ListTile(
       title: new Text(
         article.title,
@@ -26,14 +25,6 @@ class ViewArticlePage extends StatelessWidget {
       videoSection = new Container(child: new VideoView());
     }
 
-    var sourceButtonSection;
-    if (sourceUrl != null) {
-      sourceButtonSection =
-          _buildSourceButton(sourceButtonSection, context, sourceUrl);
-    } else {
-      sourceButtonSection = new Container();
-    }
-
     var contentSection = new Expanded(
         child: Column(
       children: <Widget>[
@@ -43,6 +34,13 @@ class ViewArticlePage extends StatelessWidget {
     ));
 
     return Scaffold(
+      floatingActionButton: sourceUrl != null
+          ? new FloatingActionButton(
+              child: Icon(Icons.exit_to_app),
+              onPressed: () {
+                _goToSource(context, sourceUrl);
+              })
+          : null,
       body: NestedScrollView(
         headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
           return <Widget>[
@@ -68,32 +66,10 @@ class ViewArticlePage extends StatelessWidget {
         body: Column(
           children: <Widget>[
             contentSection,
-            sourceButtonSection,
           ],
         ),
       ),
     );
-  }
-
-  _buildSourceButton(
-      sourceButtonSection, BuildContext context, String sourceUrl) {
-    sourceButtonSection = Row(
-      children: <Widget>[
-        Expanded(
-          child: Padding(
-            padding: const EdgeInsets.only(left: 8.0, right: 8.0),
-            child: new MaterialButton(
-                child: new Text('Read more',
-                    style: new TextStyle(color: Colors.white)),
-                color: Colors.green,
-                onPressed: () {
-                  _goToSource(context, sourceUrl);
-                }),
-          ),
-        ),
-      ],
-    );
-    return sourceButtonSection;
   }
 
   Container _buildArticleBackground(String imageUrl, context) {
