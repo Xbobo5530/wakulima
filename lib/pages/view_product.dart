@@ -3,10 +3,10 @@ import 'package:flutter_fab_dialer/flutter_fab_dialer.dart';
 import 'package:flutter_launch/flutter_launch.dart';
 import 'package:map_view/map_view.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:wakulima/keys/keys.dart';
 import 'package:wakulima/models/contact.dart';
 import 'package:wakulima/models/product.dart';
 
-const API_KEY = "AIzaSyDXiB_QFAVQAssZqat4ApMeP9I96HWViCI";
 const tag = 'ViewProductPage';
 
 class ViewProductPage extends StatelessWidget {

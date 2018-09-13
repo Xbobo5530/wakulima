@@ -20,7 +20,6 @@ class ViewThreadPage extends StatelessWidget {
           IconButton(
               icon: Icon(
                 Icons.cancel,
-                color: Colors.red,
               ),
               onPressed: () => _closeThread(context))
         ],
