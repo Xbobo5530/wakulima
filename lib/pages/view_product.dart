@@ -4,11 +4,11 @@ import 'package:map_view/map_view.dart';
 import 'package:wakulima/models/product.dart';
 
 const API_KEY = "AIzaSyDXiB_QFAVQAssZqat4ApMeP9I96HWViCI";
+const tag = 'ViewProductPage';
 
 class ViewProductPage extends StatelessWidget {
   final Product product;
 
-  final tag = 'ViewProductPage';
   ViewProductPage(this.product);
 
   @override
@@ -58,18 +58,19 @@ class ViewProductPage extends StatelessWidget {
       ),
     ];
 
-    return Stack(
-      children: <Widget>[
-        Scaffold(
-          appBar: AppBar(
-            title: Text(product.name),
-          ),
-          body: Center(
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(product.name),
+      ),
+      body: Stack(
+        children: <Widget>[
+          Center(
             child: _buildProductContent(product),
           ),
-        ),
-        new FabDialer(_fabMiniMenuItemList, Colors.green, new Icon(Icons.add)),
-      ],
+          new FabDialer(
+              _fabMiniMenuItemList, Colors.green, new Icon(Icons.add)),
+        ],
+      ),
     );
   }
 
