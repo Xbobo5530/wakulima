@@ -102,11 +102,11 @@ class ViewThreadPage extends StatelessWidget {
         return new AlertDialog(
           title: new Text('Toa Maoni'),
           content: new TextField(
-            maxLines: 2,
+            maxLines: null,
             autofocus: false,
             decoration: new InputDecoration(
-                labelText: 'Toa maoni',
-                hintText: 'Toa maoni yako juu maada hii'),
+              labelText: 'Toa maoni yako juu maada hii',
+            ),
             controller: _replyController,
           ),
           actions: <Widget>[
@@ -204,7 +204,8 @@ class ViewThreadPage extends StatelessWidget {
   _buildField(TextEditingController controller, String hintText) {
     return new TextField(
       controller: controller,
-      decoration: InputDecoration(hintText: hintText),
+      decoration: InputDecoration(labelText: hintText),
+      maxLines: null,
     );
   }
 

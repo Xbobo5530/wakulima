@@ -23,10 +23,7 @@ class MarketContentState extends State<MarketContentView> {
               //decode json
               var productsData = json.decode(snapshot.data.toString());
               if (productsData != null) {
-                print('products data: $productsData');
-
                 List<Product> productsList = new List();
-
                 for (var i = 0; i < productsData.length; i++) {
                   var product = Product.fromJson(productsData[i]);
                   productsList.add(product);
@@ -44,7 +41,7 @@ class MarketContentState extends State<MarketContentView> {
                         new StaggeredTile.fit(productsList.length));
               } else {
                 print('products data: $productsData');
-                return new Text('Error the products data is null');
+                return new CircularProgressIndicator();
               }
             }),
       ),

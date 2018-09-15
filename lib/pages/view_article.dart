@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:wakulima/models/article.dart';
 import 'package:wakulima/pages/view_image.dart';
-import 'package:wakulima/views/video_view.dart';
 
 class ViewArticlePage extends StatelessWidget {
   final Article article;
@@ -22,7 +21,7 @@ class ViewArticlePage extends StatelessWidget {
     var videoUrl = article.videoUrl;
     if (videoUrl != null) {
       print('at video player');
-      videoSection = new Container(child: new VideoView());
+      videoSection = new Container(/*child: new VideoView()*/);
     }
 
     var contentSection = new Expanded(

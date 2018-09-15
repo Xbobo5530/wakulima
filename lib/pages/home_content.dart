@@ -1,82 +1,71 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_fab_dialer/flutter_fab_dialer.dart';
 import 'package:wakulima/pages/articles_tab.dart';
 import 'package:wakulima/pages/filter_content.dart';
 import 'package:wakulima/pages/forum_tab.dart';
 import 'package:wakulima/pages/market_tab.dart';
+import 'package:wakulima/pages/new_forum_thread_dialog.dart';
+import 'package:wakulima/pages/new_product_dialog.dart';
 
 const APP_NAME = 'Wakulima';
 const ARTICLES_TAB_TITLE = 'Makala';
 const FORUM_TAB_TITLE = 'Mijadala';
 const MARKET_TAB_TITLE = 'Soko';
+const _newThread = 'Maada mpya';
+const _newProduct = 'Bidhaa mpya';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
+  @override
+  _HomePageState createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  void _select(Choice choice) {
+    //tried a switch statement,but requires a constant v
+    if (choice == choices[0]) {
+      _ask(context);
+    } else if (choice == choices[1]) {
+      _addProduct(context);
+    } else {
+      print('$tag unknown selected popup item');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
-    var _fabMiniMenuItemList = [
-      new FabMiniMenuItem.withText(
-        new Icon(Icons.live_help),
-        Colors.green,
-        4.0,
-        "Button menu",
-        _ask,
-        "Uliza swali",
-        Colors.green,
-        Colors.white,
-      ),
-      new FabMiniMenuItem.withText(
-        new Icon(Icons.library_add),
-        Colors.green,
-        4.0,
-        "Button menu",
-        _addProduct,
-        "Makala mpya",
-        Colors.green,
-        Colors.white,
-      ),
-      new FabMiniMenuItem.withText(
-        new Icon(Icons.add_shopping_cart),
-        Colors.green,
-        4.0,
-        "Button menu",
-        _addArticle,
-        "Tangaza bidhaa",
-        Colors.green,
-        Colors.white,
-      ),
-    ];
-
     return Scaffold(
-      body: Stack(
-        children: <Widget>[
-          DefaultTabController(
-              length: 3,
-              child: Scaffold(
-                appBar: AppBar(
-                  actions: <Widget>[
-                    IconButton(
-                        icon: new Icon(Icons.filter_list),
-                        onPressed: () {
-                          _openFilterPage(context);
-                        })
-                  ],
-                  bottom: TabBar(tabs: [
-                    buildTab(Icons.library_books, ARTICLES_TAB_TITLE),
-                    buildTab(Icons.forum, FORUM_TAB_TITLE),
-                    buildTab(Icons.store_mall_directory, MARKET_TAB_TITLE),
-                  ]),
-                  title: const Text(APP_NAME),
+      floatingActionButton: new FloatingActionButton(
+          child: new Icon(Icons.filter_list),
+          onPressed: () => _openFilterPage(context)),
+      body: DefaultTabController(
+          length: 3,
+          child: Scaffold(
+            appBar: AppBar(
+              actions: <Widget>[
+                PopupMenuButton<Choice>(
+                  onSelected: _select,
+                  itemBuilder: (BuildContext context) {
+                    return choices.map((Choice choice) {
+                      return PopupMenuItem<Choice>(
+                        value: choice,
+                        child: Text(choice.title),
+                      );
+                    }).toList();
+                  },
                 ),
-                body: TabBarView(children: [
-                  new ArticlesTab(),
-                  new ForumTab(),
-                  new MarketTab(),
-                ]),
-              )),
-          new FabDialer(
-              _fabMiniMenuItemList, Colors.green, new Icon(Icons.add)),
-        ],
-      ),
+              ],
+              bottom: TabBar(tabs: [
+                buildTab(Icons.library_books, ARTICLES_TAB_TITLE),
+                buildTab(Icons.forum, FORUM_TAB_TITLE),
+                buildTab(Icons.store_mall_directory, MARKET_TAB_TITLE),
+              ]),
+              title: const Text(APP_NAME),
+            ),
+            body: TabBarView(children: [
+              new ArticlesTab(),
+              new ForumTab(),
+              new MarketTab(),
+            ]),
+          )),
     );
   }
 
@@ -94,13 +83,31 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  void _addProduct() {
-    //todo add new product
+  void _addProduct(BuildContext context) {
+    Navigator.of(context).push(new MaterialPageRoute<Null>(
+        builder: (BuildContext context) {
+          return new NewProductDialog();
+        },
+        fullscreenDialog: true));
   }
-  void _addArticle() {
-    //todo add new article
-  }
-  void _ask() {
-    //todo add new forum thread
+
+  void _ask(BuildContext context) {
+    Navigator.of(context).push(new MaterialPageRoute<Null>(
+        builder: (BuildContext context) {
+          return new NewForumThreadDialog();
+        },
+        fullscreenDialog: true));
   }
 }
+
+class Choice {
+  const Choice({this.title, this.icon});
+
+  final String title;
+  final IconData icon;
+}
+
+const List<Choice> choices = const <Choice>[
+  const Choice(title: _newThread),
+  const Choice(title: _newProduct),
+];

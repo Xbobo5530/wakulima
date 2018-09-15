@@ -41,7 +41,7 @@ class ArticlesContentState extends State<ArticlesContentView> {
                 );
               } else {
                 print('articles data: $articlesData');
-                return new Text('Error the articles data is null');
+                return new CircularProgressIndicator();
               }
             }),
       ),

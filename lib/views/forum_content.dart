@@ -38,7 +38,7 @@ class ForumContentState extends State<ForumContentView> {
                 );
               } else {
                 print('forum data: $forumData');
-                return new Text('Error the forum data is null');
+                return new CircularProgressIndicator();
               }
             }),
       ),
